@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -35,8 +36,9 @@ class MyHomePage extends StatefulWidget {
 class Photo {
   String title;
   File photo;
+  String base64;
 
-  Photo({this.title, this.photo});
+  Photo({this.title, this.photo, this.base64});
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -81,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 final cropPhoto = await cropImage(context, photo.path);
                 setState(() {
                   test.photo = cropPhoto;
+                  test.base64 = base64Encode(cropPhoto.readAsBytesSync());
                 });
               },
               icon: Icon(Icons.camera),
