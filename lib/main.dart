@@ -81,12 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () async {
                 final photo = await takeFoto(context);
                 final cropPhoto = await cropImage(context, photo.path);
+                final photoBase64 = base64Encode(cropPhoto.readAsBytesSync());
                 setState(() {
                   test.photo = cropPhoto;
-                  test.base64 = base64Encode(cropPhoto.readAsBytesSync());
+                  test.base64 = photoBase64;
                 });
               },
-              icon: Icon(Icons.camera),
+              icon: Icon(Icons.camera_alt_outlined),
             ),
           );
         },
