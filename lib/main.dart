@@ -4,7 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 
-import 'camera/camera_vistoria.dart';
+// import 'camera/camera_vistoria.dart';
+import 'camera_simples.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Photo(title: 'Photo 7'),
     Photo(title: 'Photo 8'),
     Photo(title: 'Photo 9'),
+    Photo(title: 'Photo 10'),
     Photo(title: 'Photo 11'),
     Photo(title: 'Photo 12'),
     Photo(title: 'Photo 13'),
@@ -98,7 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<File> takeFoto(BuildContext ctx) async {
     final foto = await showDialog(
       context: ctx,
-      builder: (_) => CameraVistoria(useZoomGesture: false, titulo: 'Title'),
+      // builder: (_) => CameraVistoria(useZoomGesture: false, titulo: 'Title'),
+      builder: (_) => CameraSimples(),
     );
     return foto;
   }
